@@ -1,3 +1,8 @@
+# browser = webdriver.Chrome(executable_path='●')について
+# ●にchromedriverまでのパスを入れる必要あり。
+
+######################## インポート ########################
+
 # jsonデータを取得するため
 from bs4 import BeautifulSoup
 import requests
@@ -15,6 +20,8 @@ from selenium.webdriver.common.keys import Keys
 
 # 待ち時間
 import time
+
+######################## プログラム ########################
 
 # 最初のページまで行く
 # executable_path='●'　の●にchromedriverまでのパスを入れる必要あり。
