@@ -1,7 +1,3 @@
-# ログインページにアクセスする
-# 参考
-# https://chibashi.me/development/python/scraping-1/
-
 # jsonデータを取得するため
 from bs4 import BeautifulSoup
 import requests
@@ -63,10 +59,13 @@ while True:
         browser.implicitly_wait(30)
         browser.get(detail_urls[i])
         browser.implicitly_wait(30)
+
         #一覧のクラス取得
         table_elm = browser.find_elements_by_class_name('resume')[1]
+
         # 会社名
         company_name  = table_elm.find_elements(By.TAG_NAME, 'td')[1].text.strip('"')
+
         # 職種
         job_code = browser.find_element_by_class_name('code').text.strip('職種コード：')
 
@@ -97,15 +96,18 @@ while True:
 
         #資本金
         capital = table_elm.find_elements(By.TAG_NAME, 'td')[3].text.strip('"')
+
         #売上
         sales = table_elm.find_elements(By.TAG_NAME, 'td')[4].text.strip('"')
-        #自社サービスか
+
+        #自社サービスというワードが入っているか
         all = browser.find_element_by_css_selector('body').text.strip()
         if all.find('自社サービス') > 0:
             in_house = '〇'
         else:
             in_house = '×'
-        #未経験
+
+        #未経験というワードが入っているか
         if all.find('未経験') > 0:
             experience = '〇'
         else:
